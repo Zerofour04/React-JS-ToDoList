@@ -4,7 +4,7 @@ function headerTitle() {
   return (
     <header className="App-header-text">
       <p><strong>
-        <ins>ToDoListe</ins>
+        <ins>ToDoList</ins>
       </strong>
       </p>
       <i>created by</i>

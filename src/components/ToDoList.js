@@ -12,7 +12,6 @@ function ToDoList(props) {
       })}
     </ul>
     </>
-
   )
 }
 

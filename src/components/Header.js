@@ -6,7 +6,7 @@ const Header = () => {
   <header className="App-header">
     <img src={ logo } className="App-logo" alt="logo"/>
     <p><strong>
-      <ins>ToDoListe</ins>
+      <ins>ToDoList</ins>
     </strong>
     </p>
     <i>created by Zerofour</i>

@@ -30,12 +30,11 @@ const Liste = () => {
     )
 }
 
-function App(props) {
-
+function App() {
     const [todoList, setTodoList] = useState([randomObj, randomObj1, randomObj2])
 
     function checkedChange(getID) {
-        console.log('Status geändert | clicked');
+        console.log('state changed | clicked');
         const todo = { ...todoList.find(todoItem => todoItem.id === getID) };
 
         let todoListCopy = [...todoList];
@@ -62,7 +61,7 @@ function App(props) {
         todo.text = editText
         toDoListCopy[snipping] = todo;
         console.log('todo', todo)
-        console.log("Neuer Text", editText)
+        console.log("new text:", editText)
         setTodoList(toDoListCopy)
     }
 
@@ -72,7 +71,7 @@ function App(props) {
         todoList.splice(trash,1)
         console.log(todoList);
         setTodoList([...todoList])
-        console.log('Item gelöscht', delItem, '0');
+        console.log('Item deleted', delItem, '0');
     }
 
     function randomNumGenerator(){
@@ -84,13 +83,18 @@ function App(props) {
     }
 
     function addToDo(userInput){
-
-        const userInputTest = {
-            text: userInput,
-            id: randomNumGenerator(),
-            isChecked: false,
+        if (userInput === '') {
+            console.log('ERROR NO INPUT')
+            alert('No text = No task :/')}
+        else {
+            const userInputTest = {
+                text: userInput,
+                id: randomNumGenerator(),
+                isChecked: false,
+            }
+            setTodoList([...todoList, userInputTest]);
+            alert('1 new ToDo was added');
         }
-        setTodoList([...todoList, userInputTest]);
     }
 
     return (
