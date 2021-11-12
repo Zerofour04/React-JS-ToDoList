@@ -6,20 +6,42 @@ const Header = () => {
   <header className="App-header">
     <img src={ logo } className="App-logo" alt="logo"/>
     <p><strong>
-      <ins>ToDoList</ins>
+      <ins className="ins">ToDoListe</ins>
     </strong>
     </p>
-    <i>created by Zerofour</i>
+    {/*<i>from Ben</i>*/}
     <a
-      className="App-link"
+      className="virus"
       href="https://youtu.be/iik25wqIuFo"
       target="_blank"
       rel="noopener noreferrer"
     >
-      cLicK f0r V1rus
+      V1rus
     </a>
-    <p></p>
-  </header>
+    {/*<p></p>*/}
+    {/*<div className="perspective-text">*/}
+    {/*  <div className="perspective-line">*/}
+    {/*    <p></p>*/}
+    {/*    <p>von</p>*/}
+    {/*  </div>*/}
+    {/*  <div className="perspective-line">*/}
+    {/*    <p>ARS</p>*/}
+    {/*    <p>Ben</p>*/}
+    {/*  </div>*/}
+    {/*  <div className="perspective-line">*/}
+    {/*    <p>Modern Web</p>*/}
+    {/*    <p>David</p>*/}
+    {/*  </div>*/}
+    {/*  <div className="perspective-line">*/}
+    {/*    <p>Abteilung 2</p>*/}
+    {/*    <p>Dinko</p>*/}
+    {/*  </div>*/}
+    {/*  <div className="perspective-line">*/}
+    {/*    <p>Praktikum</p>*/}
+    {/*    <p>Sven</p>*/}
+    {/*  </div>*/}
+    {/*</div>*/}
+    </header>
   )
 }
 

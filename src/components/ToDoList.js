@@ -4,13 +4,15 @@ import ToDoListItem from './ToDoListItem';
 function ToDoList(props) {
   return (
     <>
-    <ul>
-      { props.list.map(entry => {
-        return (
-            <ToDoListItem key={ entry.id } line={entry} todoChange={props.todoChange} edit={props.edit} del={props.del}/>
-        );
-      })}
-    </ul>
+      <div style={{display: 'flex', 'align-items': 'center', 'justify-content': 'center'}}>
+        <ul className='card'>
+          { props.list.map(entry => {
+            return (
+                <ToDoListItem key={ entry.id } line={entry} todoChange={props.todoChange} edit={props.edit} del={props.del}/>
+            );
+          })}
+        </ul>
+      </div>
     </>
   )
 }

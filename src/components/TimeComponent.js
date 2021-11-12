@@ -19,7 +19,7 @@ class Clock extends Component {
     });
   }
   render() {
-    return <h3>Time: {this.state.time}</h3>;
+    return <h3>{this.state.time}</h3>;
   }
 }
 

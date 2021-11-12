@@ -1,3 +1,4 @@
+//Wichtige Module und Imports
 import React, {useState} from 'react';
 import './App.css';
 import Input from './components/InputComponent'
@@ -34,7 +35,7 @@ function App() {
     const [todoList, setTodoList] = useState([randomObj, randomObj1, randomObj2])
 
     function checkedChange(getID) {
-        console.log('state changed | clicked');
+        console.log('Status geändert | clicked');
         const todo = { ...todoList.find(todoItem => todoItem.id === getID) };
 
         let todoListCopy = [...todoList];
@@ -61,7 +62,7 @@ function App() {
         todo.text = editText
         toDoListCopy[snipping] = todo;
         console.log('todo', todo)
-        console.log("new text:", editText)
+        console.log("Neuer Text", editText)
         setTodoList(toDoListCopy)
     }
 
@@ -71,7 +72,7 @@ function App() {
         todoList.splice(trash,1)
         console.log(todoList);
         setTodoList([...todoList])
-        console.log('Item deleted', delItem, '0');
+        console.log('Item gelöscht', delItem, '0');
     }
 
     function randomNumGenerator(){
@@ -85,7 +86,7 @@ function App() {
     function addToDo(userInput){
         if (userInput === '') {
             console.log('ERROR NO INPUT')
-            alert('No text = No task :/')}
+            alert('Du muss einen Text hineinschreiben')}
         else {
             const userInputTest = {
                 text: userInput,
@@ -93,18 +94,18 @@ function App() {
                 isChecked: false,
             }
             setTodoList([...todoList, userInputTest]);
-            alert('1 new ToDo was added');
+            alert('Du hast 1 weitere ToDo hinzugefügt');
         }
     }
 
     return (
         <div className="App">
             <Router>
-                <Link to="/header" className="top-button">Header</Link>
-                <Link to="/input" className="top-button">Add ToDo</Link>
-                <Link to="/todolist" className="top-button">ToDos</Link>
-                <Link to="/clock" className="top-button">Clock</Link>
-                <Route path="/header">
+                <Link to="/" className="top-button"role="button"><span className="text">Main Page</span><span>LOL rickroled</span></Link>
+                <Link to="/input" className="top-button"role="button"><span className="text">Add ToDo</span><span>new Task</span></Link>
+                <Link to="/todolist" className="top-button"role="button"><span className="text">ToDos</span><span>all ToDos</span></Link>
+                <Link to="/clock" className="top-button"role="button"><span className="text">Clock</span><span>Your Time</span></Link>
+                <Route path="/" exact>
                     <Header/>
                 </Route>
                 <Route path="/clock">
@@ -114,7 +115,7 @@ function App() {
                     <Input addToDo={addToDo}/>
                 </Route>
                 <Route path="/todolist">
-                    <ToDoList  list={ todoList } todoChange={checkedChange} edit={handleEditing} del={deleteConsole}/>
+                    <ToDoList list={ todoList } todoChange={checkedChange} edit={handleEditing} del={deleteConsole}/>
                 </Route>
             </Router>
         </div>

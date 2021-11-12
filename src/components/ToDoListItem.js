@@ -26,8 +26,7 @@ function ToDoListItem(props) {
         </button>
 
         <button className="deleteButton" onClick={ () => props.del(props.line.id) }
-        >
-        Delete
+        >Delete
         </button>
     </li>
   )
