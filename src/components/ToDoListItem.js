@@ -28,15 +28,16 @@ function ToDoListItem(props) {
         className="editButton"
         onClick={ () => setIsEditMode(true) }>
         Edit
-      </button>
+        </button>
 
-      <button
-          className="deleteButton"
-          onClick={ () => props.del(props.line.id) }>
-          Delete
-      </button>
-    </li>
-  )
-}
+        <button
+        className="deleteButton"
+        onClick={ () => props.del(props.line.id) }>
+        Delete
+        </button>
+        </li>
+        )
+      }
 
-export default ToDoListItem;
+
+      export default ToDoListItem;

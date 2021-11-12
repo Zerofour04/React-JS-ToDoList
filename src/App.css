@@ -138,3 +138,17 @@ li {
   border: 1px solid #dfdfdf;
 }
 
+.top-button {
+  background-color: #4c87af;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+

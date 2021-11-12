@@ -20,17 +20,15 @@ const randomObj2 = {
 const Input = () => {
   const [userInput, setUserInput] = useState('');
   const [todoList, setTodoList] = useState([randomObj, randomObj1, randomObj2])
-
   const addElement = (event) => {
     console.log('Input: ', userInput);
     console.log('List refreshed: ', todoList);
-    alert('You added new task');
+    alert('1 new task was added');
     if (userInput === '') {
       console.log('ERROR NO INPUT')
-      alert('No text = No task :/')
+      alert('No text = No input :/')
       return;
     }
-
     const userInputTest = {
       text: userInput,
       id: randomNumGenerator(),
@@ -69,18 +67,17 @@ const Input = () => {
     todo.text = editText
     toDoListCopy[snipping] = todo;
     console.log('todo', todo)
-    console.log("Neuer Text", editText)
+    console.log("New text", editText)
     setTodoList(toDoListCopy)
   }
 
   function deleteConsole(delItem){
     const trash = todoList.findIndex(todoItem => todoItem.id === delItem)
-    // todoList.findIndex(todoItem => todoItem.id === delItem)
     console.log(todoList);
     todoList.splice(trash,1)
     console.log(todoList);
     setTodoList([...todoList])
-    console.log('Item gelöscht', delItem, '0');
+    console.log('Item deleted', delItem, '0');
   }
 
   function randomNumGenerator(){
@@ -96,9 +93,10 @@ const Input = () => {
       <h2 className="ToDo">Tasks:</h2>
       <textarea style={ { resize: 'none' }} className="ToDoText" rows="1" cols="60" value={ userInput }
                 onChange={ (event) => setUserInput(event.target.value) }
-                placeholder="Write ToDo!" />
+                placeholder="Write ToDo" />
       <button className="button" onClick={ addElement }>Add</button>
       <ToDoList items={todoList} todoChange={checkedChange}  del={deleteConsole} edit={handleEditing} />
+      <br></br>
     </div>
 
   )
