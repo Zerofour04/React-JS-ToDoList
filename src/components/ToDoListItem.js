@@ -1,19 +1,17 @@
 import React from 'react';
-import tick from './Tick'
 
-const ToDoListItem = (props) => {
+function ToDoListItem(props){
+
   return (
     <li>
-      <input type="checkbox" onClick={ () => removeList(), tick(props.line.id) }/>
-      { props.line.text }
+      <input type="checkbox" id="todo" name="todo" value="todo"
+             onClick={ () => props.todoChange(props.line.id)}
+      />
+      <span className={ props.line.isChecked ? "active" : "" }>
+        { props.line.text }
+      </span>
     </li>
   )
-}
-
-function removeList(id) {
-  console.log()
-  console.log('Item wird entfernt', id)
-  return
 }
 
 export default ToDoListItem;

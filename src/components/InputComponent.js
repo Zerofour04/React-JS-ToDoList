@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ToDoListe from './ToDoList'
+import ToDoList from './ToDoList';
 
 const randomObj = {
   text: 'Item 1',
@@ -18,20 +18,42 @@ const randomObj2 = {
 }
 
 const Input = () => {
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState(''); //
   const [todoList, setTodoList]=useState([randomObj, randomObj1, randomObj2])
 
   const addElement = (event) => {
     event.preventDefault();
     console.log('Input: ', userInput);
     console.log('List refreshed: ', todoList);
+    if (userInput === '') {
+      console.log('ERROR NO INPUT')
+      alert('No text = No new task :/')
+      return;
+    }
     const userInputTest = {
       text: userInput,
       id: randomNumGenerator(),
     }
     setTodoList([...todoList, userInputTest]);
     setUserInput('',);
-    randomNumGenerator();
+  }
+
+ function checkedChange(getID){
+    console.log('state changed');
+    console.log('clicked')
+    const todo = todoList.find(todoItem => todoItem.id === getID);
+    console.log('this is the found todo: ', todo);
+
+    const toggledTodo = {...todo, isChecked: !todo.isChecked}
+    console.log('toggled Todo: ', toggledTodo)
+
+    const filteredArray = todoList.filter(todoItem => todoItem.id !== getID);
+    console.log('filtered Array: ', filteredArray)
+
+    const updatedTodoList = [...filteredArray, toggledTodo];
+    console.log('updated: ', updatedTodoList);
+
+    setTodoList(updatedTodoList);
   }
 
   function randomNumGenerator(){
@@ -44,14 +66,13 @@ const Input = () => {
 
   return (
     <div>
-      {/*Textarea, Button und Console*/ }
-      {/*{listItems}*/ }
-      <h2 className="ToDo">Tasks:</h2>
+      <h2 className="ToDo">Aufgaben:</h2>
       <textarea style={ { resize: 'none' }} className="ToDoText" rows="1" cols="60" value={ userInput }
                 onChange={ (event) => setUserInput(event.target.value) }
-                placeholder="Schreibe hier deine ToDo rein!" />
+                placeholder="Write ToDo!" />
       <button className="button" onClick={ addElement }>Add</button>
-      <ToDoListe items={todoList}/>
+      <ToDoList items={todoList} bananana={todoList[0].id} todoChange={checkedChange}/>
+      <button onClick={checkedChange}>Everything done</button>
       <br></br>
     </div>
   )

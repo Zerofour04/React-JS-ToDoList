@@ -1,16 +1,19 @@
 import React from 'react';
 import ToDoListItem from './ToDoListItem';
 
-function ToDoListe(props) {
+function ToDoList(props) {
+
   return (
+    <>
     <ul>
-      { props.items.map((entry, index) => {
+      { props.items.map(entry => {
         return (
-          <ToDoListItem line={entry}/>
+            <ToDoListItem key={ entry.id } line={entry} todoChange={props.todoChange}/>
         );
       })}
     </ul>
+    </>
   )
 }
 
-export default ToDoListe;
+export default ToDoList;
