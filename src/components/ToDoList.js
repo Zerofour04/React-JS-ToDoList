@@ -5,14 +5,14 @@ function ToDoList(props) {
   return (
     <>
     <ul>
-      { props.items.map(entry => {
+      { props.list.map(entry => {
         return (
-            <ToDoListItem key={ entry.id } line={entry} todoChange={props.todoChange}
-                          edit={props.edit} del={props.del}/>
+            <ToDoListItem key={ entry.id } line={entry} todoChange={props.todoChange} edit={props.edit} del={props.del}/>
         );
       })}
     </ul>
     </>
+
   )
 }
 

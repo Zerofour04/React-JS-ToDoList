@@ -38,6 +38,4 @@ function ToDoListItem(props) {
         </li>
         )
       }
-
-
       export default ToDoListItem;

@@ -6,7 +6,7 @@ const Header = () => {
   <header className="App-header">
     <img src={ logo } className="App-logo" alt="logo"/>
     <p><strong>
-      <ins>ToDoList</ins>
+      <ins>ToDoListe</ins>
     </strong>
     </p>
     <i>created by Zerofour</i>
@@ -16,7 +16,7 @@ const Header = () => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      V1rus
+      cLicK f0r V1rus
     </a>
     <p></p>
   </header>

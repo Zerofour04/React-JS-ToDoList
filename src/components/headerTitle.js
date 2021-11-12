@@ -7,14 +7,14 @@ function headerTitle() {
         <ins>ToDoListe</ins>
       </strong>
       </p>
-      <i>von Ben Ho</i>
+      <i>created by</i>
       <a
         className="App-link"
         href="https://youtu.be/iik25wqIuFo"
         target="_blank"
         rel="noopener noreferrer"
       >
-        V1rus
+        Virus
       </a>
     </header>
   )
