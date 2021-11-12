@@ -1,38 +1,59 @@
 import React, { useState } from 'react';
+import ToDoListe from './ToDoList'
+
+const randomObj = {
+  text: 'Item 1',
+  id: 1,
+  isChecked: false,
+}
+const randomObj1 = {
+  text: 'Item 2',
+  id: 2,
+  isChecked: false,
+}
+const randomObj2 = {
+  text: 'Item 3',
+  id: 3,
+  isChecked: false,
+}
 
 const Input = () => {
   const [userInput, setUserInput] = useState('');
-  const [todoList, setTodoList]=useState(["Item1", "Item2", "Item3"])
+  const [todoList, setTodoList]=useState([randomObj, randomObj1, randomObj2])
+
   const addElement = (event) => {
     event.preventDefault();
     console.log('Input: ', userInput);
     console.log('List refreshed: ', todoList);
-    setTodoList([...todoList, userInput]);
-    setUserInput("");
+    const userInputTest = {
+      text: userInput,
+      id: randomNumGenerator(),
+    }
+    setTodoList([...todoList, userInputTest]);
+    setUserInput('',);
+    randomNumGenerator();
+  }
+
+  function randomNumGenerator(){
+    const randomNum = Math.random() * 100000;
+    const newNumber = Math.floor(randomNum);
+    console.log('ID', randomNum);
+    console.log('floored', newNumber);
+    return newNumber;
   }
 
   return (
     <div>
-      <h2 className="ToDo">To Do 1:</h2>
-      <textarea className="ToDoText" rows="1" cols="60" value={ userInput }
+      {/*Textarea, Button und Console*/ }
+      {/*{listItems}*/ }
+      <h2 className="ToDo">Tasks:</h2>
+      <textarea style={ { resize: 'none' }} className="ToDoText" rows="1" cols="60" value={ userInput }
                 onChange={ (event) => setUserInput(event.target.value) }
-                placeholder="Write ToDo!"></textarea>
-      <button className="button" onClick={ addElement }>Hinzufügen</button>
-      <ul>
-        { todoList.map((entry,index) => {
-          return (
-            <li key={ index }>
-              { entry }
-            </li>
-          );
-        }) }
-      </ul>
-
-      <h3>Time: { new Date().toLocaleTimeString() }.</h3>
+                placeholder="Schreibe hier deine ToDo rein!" />
+      <button className="button" onClick={ addElement }>Add</button>
+      <ToDoListe items={todoList}/>
+      <br></br>
     </div>
   )
 }
-
-
-
 export default Input;
