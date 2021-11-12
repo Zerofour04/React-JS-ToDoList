@@ -18,42 +18,69 @@ const randomObj2 = {
 }
 
 const Input = () => {
-  const [userInput, setUserInput] = useState(''); //
-  const [todoList, setTodoList]=useState([randomObj, randomObj1, randomObj2])
+  const [userInput, setUserInput] = useState('');
+  const [todoList, setTodoList] = useState([randomObj, randomObj1, randomObj2])
 
   const addElement = (event) => {
-    event.preventDefault();
     console.log('Input: ', userInput);
     console.log('List refreshed: ', todoList);
+    alert('You added new task');
     if (userInput === '') {
       console.log('ERROR NO INPUT')
-      alert('No text = No new task :/')
+      alert('No text = No task :/')
       return;
     }
+
     const userInputTest = {
       text: userInput,
       id: randomNumGenerator(),
+      isChecked: false,
     }
     setTodoList([...todoList, userInputTest]);
     setUserInput('',);
   }
 
- function checkedChange(getID){
-    console.log('state changed');
-    console.log('clicked')
-    const todo = todoList.find(todoItem => todoItem.id === getID);
-    console.log('this is the found todo: ', todo);
+  function checkedChange(getID) {
+    console.log('state changed | clicked');
+    const todo = { ...todoList.find(todoItem => todoItem.id === getID) };
 
-    const toggledTodo = {...todo, isChecked: !todo.isChecked}
-    console.log('toggled Todo: ', toggledTodo)
+    let todoListCopy = [...todoList];
 
-    const filteredArray = todoList.filter(todoItem => todoItem.id !== getID);
-    console.log('filtered Array: ', filteredArray)
+    const clickedIndex = todoList.findIndex(todoItem => todoItem.id === getID)
+    console.log('ID change:', clickedIndex)
 
-    const updatedTodoList = [...filteredArray, toggledTodo];
-    console.log('updated: ', updatedTodoList);
+    todo.isChecked = !todo.isChecked;
 
-    setTodoList(updatedTodoList);
+    todoListCopy[clickedIndex] =todo;
+    console.log("complete", todo)
+    console.log("isChecked complete", todo.isChecked)
+
+
+    console.log(todoListCopy)
+    setTodoList(todoListCopy)
+  }
+
+  function handleEditing(IDSnipping, editText) {
+    const todo = { ...todoList.find(todoItem => todoItem.id === IDSnipping) };
+    let toDoListCopy = [...todoList]
+    const snipping = todoList.findIndex(todoItem => todoItem.id === IDSnipping)
+    console.log('Index', snipping)
+
+    todo.text = editText
+    toDoListCopy[snipping] = todo;
+    console.log('todo', todo)
+    console.log("Neuer Text", editText)
+    setTodoList(toDoListCopy)
+  }
+
+  function deleteConsole(delItem){
+    const trash = todoList.findIndex(todoItem => todoItem.id === delItem)
+    // todoList.findIndex(todoItem => todoItem.id === delItem)
+    console.log(todoList);
+    todoList.splice(trash,1)
+    console.log(todoList);
+    setTodoList([...todoList])
+    console.log('Item gelöscht', delItem, '0');
   }
 
   function randomNumGenerator(){
@@ -66,15 +93,14 @@ const Input = () => {
 
   return (
     <div>
-      <h2 className="ToDo">Aufgaben:</h2>
+      <h2 className="ToDo">Tasks:</h2>
       <textarea style={ { resize: 'none' }} className="ToDoText" rows="1" cols="60" value={ userInput }
                 onChange={ (event) => setUserInput(event.target.value) }
                 placeholder="Write ToDo!" />
       <button className="button" onClick={ addElement }>Add</button>
-      <ToDoList items={todoList} bananana={todoList[0].id} todoChange={checkedChange}/>
-      <button onClick={checkedChange}>Everything done</button>
-      <br></br>
+      <ToDoList items={todoList} todoChange={checkedChange}  del={deleteConsole} edit={handleEditing} />
     </div>
+
   )
 }
 export default Input;

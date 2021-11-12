@@ -1,20 +1,21 @@
 .App {
   text-align: center;
+  background-color: navajowhite;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  zoom: 2;
+  background-color: grey;
+  border: red;
+  border-radius: 50px;
+  height: 100px;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,16 +26,15 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+textarea {
+  width: 30em;
+  height: 2em;
+  border: 1px solid #cccccc;
+  padding: 0.2em;
+  font-family: Tahoma, sans-serif;
 }
 
 .ToDoText {
@@ -47,15 +47,94 @@
   -webkit-border-radius: 40px;
 }
 
-textarea {
-  width: 30em;
-  height: 2em;
-  border: 1px solid #cccccc;
-  padding: 0.5em;
-  font-family: Tahoma, sans-serif;
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+
+.speichern {
+  background-color: greenyellow;
+  border: red;
+  border-radius: 25px;
+  color: white;
+  padding: 1px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editButton {
+  background-color: lightskyblue;
+  border: red;
+  border-radius: 25px;
+  color: white;
+  padding: 1px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: red;
+  border: red;
+  border-radius: 25px;
+  color: white;
+  padding: 1px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .active {
   text-decoration: line-through;
+  color: forestgreen;
+}
+
+ins {
+  zoom: 1.5;
+  border: 1px solid white;
+  border-radius: 7px;
+}
+
+h1 {
+  border: 2px solid black;
+  color: white;
+  background-color: black;
+}
+
+h2 {
+  color: red;
+  border: black;
+}
+
+.span {
+  color: darkred;
+  border-radius: 1px;
+}
+
+li {
+  zoom: 1.3;
+  position: center;
+}
+
+.textInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dfdfdf;
 }
 
