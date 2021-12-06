@@ -1,29 +1,11 @@
-//Wichtige Module und Imports
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Input from './components/InputComponent'
 import Header from './components/Header'
 import Clock from './components/TimeComponent'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ToDoList from "./components/ToDoList";
-
-const randomObj = {
-    text: 'Item 1',
-    id: 1,
-    isChecked: false,
-}
-
-const randomObj1 = {
-    text: 'Item 2',
-    id: 2,
-    isChecked: false,
-}
-
-const randomObj2 = {
-    text: 'Item 3',
-    id: 3,
-    isChecked: false,
-}
+import api from '../src/api/toDoListJSON';
 
 const Liste = () => {
     return (
@@ -32,7 +14,15 @@ const Liste = () => {
 }
 
 function App() {
-    const [todoList, setTodoList] = useState([randomObj, randomObj1, randomObj2])
+    const [todoList, setTodoList] = useState([])
+
+    const retrieveToDo = async () => {
+        const response = await api.get("/toDoJSON");
+        return response.data;
+    }
+
+    const axios = require('axios');
+
 
     function checkedChange(getID) {
         console.log('Status geändert | clicked');
@@ -64,10 +54,26 @@ function App() {
         console.log('todo', todo)
         console.log("Neuer Text", editText)
         setTodoList(toDoListCopy)
+
+        axios.put(`http://localhost:3006/toDoJSON/${IDSnipping}`, {
+            text: editText})
+            .then(resp => {
+                this.setState({toDoJSON: resp.data});
+                this.props.history.push('/toDoJSON');
+            })
+            .catch(err => console.log(err));
     }
 
-    function deleteConsole(delItem){
+    function deleteConsole(delItem, trashJSON){
         const trash = todoList.findIndex(todoItem => todoItem.id === delItem)
+
+        axios.delete(`http://localhost:3006/toDoJSON/${delItem}`)
+            .then(resp => {
+                console.log(resp.data)
+            }).catch(error => {
+            console.log(error);
+        });
+
         console.log(todoList);
         todoList.splice(trash,1)
         console.log(todoList);
@@ -94,9 +100,32 @@ function App() {
                 isChecked: false,
             }
             setTodoList([...todoList, userInputTest]);
+            console.log('Hier:', userInput)
+
+            //JSON
+
+            axios.post('http://localhost:3006/toDoJSON', {
+                text: userInput,
+                id: randomNumGenerator(),
+                isChecked: false
+            }).then(resp => {
+                console.log(resp.data);
+            }).catch(error => {
+                console.log(error);
+            });
+
             alert('Du hast 1 weitere ToDo hinzugefügt');
         }
     }
+
+    //JSON
+    useEffect(() => {
+        const getAllToDosJSON = async () => {
+            const allToDos = await retrieveToDo();
+            if (allToDos) setTodoList(allToDos)
+        };
+        getAllToDosJSON()
+    }, []);
 
     return (
         <div className="App">
