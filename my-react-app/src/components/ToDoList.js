@@ -8,7 +8,6 @@ function ToDoList(props) {
         <ul className='card'>
           { props.list.map(entry => {
             return (
-                // JSON.parse(getIt)
                 <ToDoListItem key={ entry.id } line={entry} todoChange={props.todoChange} edit={props.edit} del={props.del}/>
             );
           })}

@@ -1,6 +1,22 @@
-# FIRST PROJECT
+# 📋React ToDoList(JSON-Server)
 
-# Getting Started with Create React App
+## 📗Installation
+1. `cd my-react-app`
+2. `npm install`
+3. `npm start`
+
+### JSON Server (not required)
+4. `cd JSON-Server` 
+5. `npm install`
+6. `json-server --watch db.json`
+
+## 🧱Requirements
+- NPM
+- Node.js
+
+# ⭐Own ReactProject: 
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

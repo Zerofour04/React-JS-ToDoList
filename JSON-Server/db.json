@@ -1,16 +1,19 @@
 {
-  "toDoJSON":[
+  "toDoJSON": [
     {
-      "text":"Item1",
-      "id":"1"
+      "text": "Item1",
+      "id": 1,
+      "isChecked": false
     },
     {
-      "text":"Item3",
-      "id":"2"
+      "text": "Item2",
+      "id": 2,
+      "isChecked": false
     },
     {
-      "text":"Item3",
-      "id":"3"
+      "text": "Item3",
+      "id": 3,
+      "isChecked": false
     }
   ]
 }

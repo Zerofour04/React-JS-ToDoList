@@ -9,7 +9,6 @@ const Header = () => {
       <ins className="ins">ToDoListe</ins>
     </strong>
     </p>
-    {/*<i>from Ben</i>*/}
     <a
       className="virus"
       href="https://youtu.be/iik25wqIuFo"
@@ -18,29 +17,6 @@ const Header = () => {
     >
       V1rus
     </a>
-    {/*<p></p>*/}
-    {/*<div className="perspective-text">*/}
-    {/*  <div className="perspective-line">*/}
-    {/*    <p></p>*/}
-    {/*    <p>von</p>*/}
-    {/*  </div>*/}
-    {/*  <div className="perspective-line">*/}
-    {/*    <p>ARS</p>*/}
-    {/*    <p>Ben</p>*/}
-    {/*  </div>*/}
-    {/*  <div className="perspective-line">*/}
-    {/*    <p>Modern Web</p>*/}
-    {/*    <p>David</p>*/}
-    {/*  </div>*/}
-    {/*  <div className="perspective-line">*/}
-    {/*    <p>Abteilung 2</p>*/}
-    {/*    <p>Dinko</p>*/}
-    {/*  </div>*/}
-    {/*  <div className="perspective-line">*/}
-    {/*    <p>Praktikum</p>*/}
-    {/*    <p>Sven</p>*/}
-    {/*  </div>*/}
-    {/*</div>*/}
     </header>
   )
 }
