@@ -1,6 +1,5 @@
 {
   "name": "my-react-app",
-  "homepage": "https://zerofour04.github.io/React-ToDoList/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
